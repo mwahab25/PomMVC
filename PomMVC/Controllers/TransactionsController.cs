@@ -15,7 +15,7 @@ namespace PomMVC.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Transactions
-        public ActionResult Index(string sortOrder)
+        public ActionResult Index(string sortOrder, string searchString)
         {
             var transactions = db.Transactions.Include(t => t.Page).Include(t => t.Project).Include(t => t.User).Include(t => t.Vers);
 
@@ -24,6 +24,13 @@ namespace PomMVC.Controllers
 
             transactions = from s in db.Transactions
                                select s;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                transactions = transactions.Where(s => s.User.Email.Contains(searchString));
+
+            }
+
             switch (sortOrder)
             {
                 case "name_desc":
