@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using PomMVC.Models;
+using PagedList;
 
 namespace PomMVC.Controllers
 {
@@ -15,12 +16,25 @@ namespace PomMVC.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Transactions
-        public ActionResult Index(string sortOrder, string searchString)
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
+            ViewBag.CurrentSort = sortOrder;
+
             var transactions = db.Transactions.Include(t => t.Page).Include(t => t.Project).Include(t => t.User).Include(t => t.Vers);
 
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
 
             transactions = from s in db.Transactions
                                select s;
@@ -46,8 +60,10 @@ namespace PomMVC.Controllers
                     transactions = transactions.OrderByDescending(s => s.TransDate);
                     break;
             }
-           
-            return View(transactions.ToList());
+
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            return View(transactions.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Transactions/Details/5

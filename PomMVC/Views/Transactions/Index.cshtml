@@ -1,4 +1,7 @@
-﻿@model IEnumerable<PomMVC.Models.Transaction>
+﻿@*@model IEnumerable<PomMVC.Models.Transaction>*@
+@model PagedList.IPagedList<PomMVC.Models.Transaction>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
     ViewBag.Title = "Transactions";
@@ -10,37 +13,37 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-@using (Html.BeginForm())
+@using (Html.BeginForm("Index", "Transactions", FormMethod.Get))
 {
     <p>
-        Find by User: @Html.TextBox("SearchString")
+        Find by User: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
         <input type="submit" value="Search"/>
     </p>
 }
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Page.PageName)
+            Page
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Project.ProjectName)
+            Project
         </th>
         <th>
             @*@Html.DisplayNameFor(model => model.User.Email)*@
             @Html.ActionLink("User", "Index", new { sortOrder = ViewBag.NameSortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Vers.VersNo)
+            Version
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TransType)
+            Transaction Type
         </th>
         <th>
             @*@Html.DisplayNameFor(model => model.TransDate)*@
             @Html.ActionLink("Transaction Date", "Index", new { sortOrder = ViewBag.DateSortParm })           
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TransFunEle)
+            Transaction Place
         </th>
       
         <th></th>
@@ -79,3 +82,9 @@
 }
 
 </table>
+
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
