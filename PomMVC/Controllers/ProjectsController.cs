@@ -10,6 +10,7 @@ using PomMVC.Models;
 
 namespace PomMVC.Controllers
 {
+    [Authorize]
     public class ProjectsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

@@ -11,6 +11,7 @@ using PagedList;
 
 namespace PomMVC.Controllers
 {
+    [Authorize]
     public class TransactionsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
