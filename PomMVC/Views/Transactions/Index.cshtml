@@ -1,0 +1,74 @@
+﻿@model IEnumerable<PomMVC.Models.Transaction>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Page.PageName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Project.ProjectName)
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.User.Email)*@
+            @Html.ActionLink("User", "Index", new { sortOrder = ViewBag.NameSortParm })
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vers.VersNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TransType)
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.TransDate)*@
+            @Html.ActionLink("Transaction Date", "Index", new { sortOrder = ViewBag.DateSortParm })           
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TransFunEle)
+        </th>
+      
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Page.PageName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Project.ProjectName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vers.VersNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TransType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TransDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TransFunEle)
+        </td>
+       
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TransID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TransID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TransID })
+        </td>
+    </tr>
+}
+
+</table>

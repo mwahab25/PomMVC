@@ -1,0 +1,27 @@
+﻿@model PomMVC.Models.Vers
+
+@{
+    ViewBag.Title = "Versions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Vers</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.VersNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VersNo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.VersID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

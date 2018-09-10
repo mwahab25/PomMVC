@@ -1,0 +1,83 @@
+﻿@model PomMVC.Models.Transaction
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Transaction</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Page.PageName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Page.PageName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Project.ProjectName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Project.ProjectName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vers.VersNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vers.VersNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TransType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TransType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TransDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TransDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TransFunEle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TransFunEle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TransText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TransText)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TransID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

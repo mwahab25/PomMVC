@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>POM</h1>
+    <p class="lead">Record Transactions in Page Object Model </p>
+    <p><a href="@Url.Action("Index", "Transactions")" class="btn btn-primary btn-lg">Add Transaction &raquo;</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Add Projects</h2>
+        <p>Add projects solutions names</p>
+        <p>
+            <a class="btn btn-default" href="@Url.Action("Index", "Projects")">Projects &raquo;</a>
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h2>Add Versions</h2>
+        <p>
+            Add project version
+        </p>
+        <p><a class="btn btn-default" href="@Url.Action("Index", "Vers")">Versions &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Add Pages</h2>
+        <p>Add pages regarding to version of project</p>
+        <p><a class="btn btn-default" href="@Url.Action("Index", "Pages")">Pages &raquo;</a></p>
+    </div>    
+</div>
