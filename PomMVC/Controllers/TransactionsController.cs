@@ -48,7 +48,7 @@ namespace PomMVC.Controllers
             switch (sortOrder)
             {
                 case "name_desc":
-                    transactions = transactions.OrderByDescending(s => s.User);
+                    transactions = transactions.OrderByDescending(s => s.User.Email);
                     break;
                 case "Date":
                     transactions = transactions.OrderBy(s => s.TransDate);
@@ -61,7 +61,7 @@ namespace PomMVC.Controllers
                     break;
             }
 
-            int pageSize = 3;
+            int pageSize = 10;
             int pageNumber = (page ?? 1);
             return View(transactions.ToPagedList(pageNumber, pageSize));
         }

@@ -30,7 +30,7 @@
         </th>
         <th>
             @*@Html.DisplayNameFor(model => model.User.Email)*@
-            @Html.ActionLink("User", "Index", new { sortOrder = ViewBag.NameSortParm })
+            @Html.ActionLink("User", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
             Version
@@ -40,7 +40,7 @@
         </th>
         <th>
             @*@Html.DisplayNameFor(model => model.TransDate)*@
-            @Html.ActionLink("Transaction Date", "Index", new { sortOrder = ViewBag.DateSortParm })           
+            @Html.ActionLink("Transaction Date", "Index", new { sortOrder = ViewBag.DateSortParm , currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
             Transaction Place
