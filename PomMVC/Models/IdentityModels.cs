@@ -23,10 +23,15 @@ namespace PomMVC.Models
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+            //Database.SetInitializer<ApplicationDbContext>(new CreateDatabaseIfNotExists<ApplicationDbContext>());
+
+            //Database.SetInitializer<ApplicationDbContext>(new DropCreateDatabaseIfModelChanges<ApplicationDbContext>());
+            //Database.SetInitializer<ApplicationDbContext>(new DropCreateDatabaseAlways<ApplicationDbContext>());
+            //Database.SetInitializer<ApplicationDbContext>(new SchoolDBInitializer());
         }
 
         public DbSet<Project> Projects { get; set; }
-        public DbSet<Vers> Versions { get; set; }
+        public DbSet<Ver> Versions { get; set; }
         public DbSet<Page> Pages { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
 

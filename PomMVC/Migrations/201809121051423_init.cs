@@ -21,8 +21,9 @@ namespace PomMVC.Migrations
                 c => new
                     {
                         TransID = c.Int(nullable: false, identity: true),
+                        UserId = c.String(maxLength: 128),
                         ProjectID = c.Int(nullable: false),
-                        VersID = c.Int(nullable: false),
+                        VerID = c.Int(nullable: false),
                         PageID = c.Int(nullable: false),
                         TransType = c.Int(nullable: false),
                         TransDate = c.DateTime(nullable: false),
@@ -32,9 +33,11 @@ namespace PomMVC.Migrations
                 .PrimaryKey(t => t.TransID)
                 .ForeignKey("dbo.Pages", t => t.PageID, cascadeDelete: true)
                 .ForeignKey("dbo.Projects", t => t.ProjectID, cascadeDelete: true)
-                .ForeignKey("dbo.Vers", t => t.VersID, cascadeDelete: true)
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId)
+                .ForeignKey("dbo.Vers", t => t.VerID, cascadeDelete: true)
+                .Index(t => t.UserId)
                 .Index(t => t.ProjectID)
-                .Index(t => t.VersID)
+                .Index(t => t.VerID)
                 .Index(t => t.PageID);
             
             CreateTable(
@@ -45,38 +48,6 @@ namespace PomMVC.Migrations
                         ProjectName = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.ProjectID);
-            
-            CreateTable(
-                "dbo.Vers",
-                c => new
-                    {
-                        VersID = c.Int(nullable: false, identity: true),
-                        VersNo = c.String(nullable: false),
-                    })
-                .PrimaryKey(t => t.VersID);
-            
-            CreateTable(
-                "dbo.AspNetRoles",
-                c => new
-                    {
-                        Id = c.String(nullable: false, maxLength: 128),
-                        Name = c.String(nullable: false, maxLength: 256),
-                    })
-                .PrimaryKey(t => t.Id)
-                .Index(t => t.Name, unique: true, name: "RoleNameIndex");
-            
-            CreateTable(
-                "dbo.AspNetUserRoles",
-                c => new
-                    {
-                        UserId = c.String(nullable: false, maxLength: 128),
-                        RoleId = c.String(nullable: false, maxLength: 128),
-                    })
-                .PrimaryKey(t => new { t.UserId, t.RoleId })
-                .ForeignKey("dbo.AspNetRoles", t => t.RoleId, cascadeDelete: true)
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
-                .Index(t => t.UserId)
-                .Index(t => t.RoleId);
             
             CreateTable(
                 "dbo.AspNetUsers",
@@ -123,32 +94,66 @@ namespace PomMVC.Migrations
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId);
             
+            CreateTable(
+                "dbo.AspNetUserRoles",
+                c => new
+                    {
+                        UserId = c.String(nullable: false, maxLength: 128),
+                        RoleId = c.String(nullable: false, maxLength: 128),
+                    })
+                .PrimaryKey(t => new { t.UserId, t.RoleId })
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
+                .ForeignKey("dbo.AspNetRoles", t => t.RoleId, cascadeDelete: true)
+                .Index(t => t.UserId)
+                .Index(t => t.RoleId);
+            
+            CreateTable(
+                "dbo.Vers",
+                c => new
+                    {
+                        VerID = c.Int(nullable: false, identity: true),
+                        VerNo = c.String(nullable: false),
+                    })
+                .PrimaryKey(t => t.VerID);
+            
+            CreateTable(
+                "dbo.AspNetRoles",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128),
+                        Name = c.String(nullable: false, maxLength: 256),
+                    })
+                .PrimaryKey(t => t.Id)
+                .Index(t => t.Name, unique: true, name: "RoleNameIndex");
+            
         }
         
         public override void Down()
         {
+            DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.Transactions", "VerID", "dbo.Vers");
+            DropForeignKey("dbo.Transactions", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.Transactions", "VersID", "dbo.Vers");
             DropForeignKey("dbo.Transactions", "ProjectID", "dbo.Projects");
             DropForeignKey("dbo.Transactions", "PageID", "dbo.Pages");
+            DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
+            DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
-            DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
-            DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
-            DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("dbo.Transactions", new[] { "PageID" });
-            DropIndex("dbo.Transactions", new[] { "VersID" });
+            DropIndex("dbo.Transactions", new[] { "VerID" });
             DropIndex("dbo.Transactions", new[] { "ProjectID" });
+            DropIndex("dbo.Transactions", new[] { "UserId" });
+            DropTable("dbo.AspNetRoles");
+            DropTable("dbo.Vers");
+            DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
-            DropTable("dbo.AspNetUserRoles");
-            DropTable("dbo.AspNetRoles");
-            DropTable("dbo.Vers");
             DropTable("dbo.Projects");
             DropTable("dbo.Transactions");
             DropTable("dbo.Pages");

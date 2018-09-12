@@ -28,7 +28,7 @@ namespace PomMVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Vers vers = db.Versions.Find(id);
+            Ver vers = db.Versions.Find(id);
             if (vers == null)
             {
                 return HttpNotFound();
@@ -47,7 +47,7 @@ namespace PomMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "VersID,VersNo")] Vers vers)
+        public ActionResult Create([Bind(Include = "VersID,VersNo")] Ver vers)
         {
             if (ModelState.IsValid)
             {
@@ -66,7 +66,7 @@ namespace PomMVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Vers vers = db.Versions.Find(id);
+            Ver vers = db.Versions.Find(id);
             if (vers == null)
             {
                 return HttpNotFound();
@@ -79,7 +79,7 @@ namespace PomMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "VersID,VersNo")] Vers vers)
+        public ActionResult Edit([Bind(Include = "VersID,VersNo")] Ver vers)
         {
             if (ModelState.IsValid)
             {
@@ -97,7 +97,7 @@ namespace PomMVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Vers vers = db.Versions.Find(id);
+            Ver vers = db.Versions.Find(id);
             if (vers == null)
             {
                 return HttpNotFound();
@@ -110,7 +110,7 @@ namespace PomMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Vers vers = db.Versions.Find(id);
+            Ver vers = db.Versions.Find(id);
             db.Versions.Remove(vers);
             db.SaveChanges();
             return RedirectToAction("Index");

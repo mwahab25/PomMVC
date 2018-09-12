@@ -13,7 +13,7 @@ namespace PomMVC.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201809091552105_init"; }
+            get { return "201809121051423_init"; }
         }
         
         string IMigrationMetadata.Source

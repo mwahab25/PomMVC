@@ -1,8 +1,7 @@
-﻿@model IEnumerable<PomMVC.Models.Vers>
+﻿@model IEnumerable<PomMVC.Models.Ver>
 
 @{
     ViewBag.Title = "Versions";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Versions</h2>
@@ -13,7 +12,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.VersNo)
+            @Html.DisplayNameFor(model => model.VerNo)
         </th>
         <th></th>
     </tr>
@@ -21,12 +20,12 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.VersNo)
+            @Html.DisplayFor(modelItem => item.VerNo)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.VersID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.VersID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.VersID })
+            @Html.ActionLink("Edit", "Edit", new { id=item.VerID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.VerID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.VerID })
         </td>
     </tr>
 }

@@ -2,7 +2,6 @@
 
 @{
     ViewBag.Title = "Transactions";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Create</h2>
@@ -33,10 +32,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.VersID, "Version", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.VerID, "Version", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("VersID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.VersID, "", new { @class = "text-danger" })
+                @Html.DropDownList("VerID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.VerID, "", new { @class = "text-danger" })
             </div>
         </div>
 

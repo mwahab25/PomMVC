@@ -213,13 +213,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201809091552105_init.cs" />
-    <Compile Include="Migrations\201809091552105_init.Designer.cs">
-      <DependentUpon>201809091552105_init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201809100836466_addUseridentity.cs" />
-    <Compile Include="Migrations\201809100836466_addUseridentity.Designer.cs">
-      <DependentUpon>201809100836466_addUseridentity.cs</DependentUpon>
+    <Compile Include="Migrations\201809121051423_init.cs" />
+    <Compile Include="Migrations\201809121051423_init.Designer.cs">
+      <DependentUpon>201809121051423_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -244,6 +240,8 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Properties\PublishProfiles\customdeploy.pubxml" />
+    <None Include="Properties\PublishProfiles\localdeploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -323,11 +321,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201809091552105_init.resx">
-      <DependentUpon>201809091552105_init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201809100836466_addUseridentity.resx">
-      <DependentUpon>201809100836466_addUseridentity.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201809121051423_init.resx">
+      <DependentUpon>201809121051423_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

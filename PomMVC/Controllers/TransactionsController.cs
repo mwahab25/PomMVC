@@ -21,7 +21,7 @@ namespace PomMVC.Controllers
         {
             ViewBag.CurrentSort = sortOrder;
 
-            var transactions = db.Transactions.Include(t => t.Page).Include(t => t.Project).Include(t => t.User).Include(t => t.Vers);
+            var transactions = db.Transactions.Include(t => t.Page).Include(t => t.Project).Include(t => t.User).Include(t => t.Ver);
 
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
@@ -109,7 +109,7 @@ namespace PomMVC.Controllers
             ViewBag.PageID = new SelectList(db.Pages, "PageID", "PageName", transaction.PageID);
             ViewBag.ProjectID = new SelectList(db.Projects, "ProjectID", "ProjectName", transaction.ProjectID);
             ViewBag.UserId = new SelectList(db.Users, "Id", "Email", transaction.UserId);
-            ViewBag.VersID = new SelectList(db.Versions, "VersID", "VersNo", transaction.VersID);
+            ViewBag.VersID = new SelectList(db.Versions, "VersID", "VersNo", transaction.VerID);
             return View(transaction);
         }
 
@@ -128,7 +128,7 @@ namespace PomMVC.Controllers
             ViewBag.PageID = new SelectList(db.Pages, "PageID", "PageName", transaction.PageID);
             ViewBag.ProjectID = new SelectList(db.Projects, "ProjectID", "ProjectName", transaction.ProjectID);
             ViewBag.UserId = new SelectList(db.Users, "Id", "Email", transaction.UserId);
-            ViewBag.VersID = new SelectList(db.Versions, "VersID", "VersNo", transaction.VersID);
+            ViewBag.VersID = new SelectList(db.Versions, "VersID", "VersNo", transaction.VerID);
             return View(transaction);
         }
 
@@ -148,7 +148,7 @@ namespace PomMVC.Controllers
             ViewBag.PageID = new SelectList(db.Pages, "PageID", "PageName", transaction.PageID);
             ViewBag.ProjectID = new SelectList(db.Projects, "ProjectID", "ProjectName", transaction.ProjectID);
             ViewBag.UserId = new SelectList(db.Users, "Id", "Email", transaction.UserId);
-            ViewBag.VersID = new SelectList(db.Versions, "VersID", "VersNo", transaction.VersID);
+            ViewBag.VersID = new SelectList(db.Versions, "VersID", "VersNo", transaction.VerID);
             return View(transaction);
         }
 

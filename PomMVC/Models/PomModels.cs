@@ -21,14 +21,14 @@ namespace PomMVC.Models
         public virtual ICollection<Transaction> Transaction { get; set; }
     }
 
-    public class Vers
+    public class Ver
     {
         [Key]
-        public int VersID { get; set; }
+        public int VerID { get; set; }
 
         [Required(ErrorMessage = "Please enter version no")]
         [Display(Name = "Version No")]
-        public string VersNo { get; set; }
+        public string VerNo { get; set; }
 
         public virtual ICollection<Transaction> Transaction { get; set; }
 
@@ -52,7 +52,7 @@ namespace PomMVC.Models
         public int TransID { get; set; }
         public string UserId { get; set; }
         public int ProjectID { get; set; }
-        public int VersID { get; set; }
+        public int VerID { get; set; }
         public int PageID { get; set; }
 
         [Display(Name = "Transaction Type")]
@@ -84,12 +84,12 @@ namespace PomMVC.Models
 
         [ForeignKey("ProjectID")]
         public virtual Project Project { get; set; }
-        [ForeignKey("VersID")]
-        public virtual Vers Vers { get; set; }
+        [ForeignKey("VerID")]
+        public virtual Ver Ver { get; set; }
 
         [ForeignKey("PageID")]
         public virtual Page Page { get; set; }
-
+        
         [ForeignKey("UserId")]
         public virtual ApplicationUser User { get; set; }
     }
