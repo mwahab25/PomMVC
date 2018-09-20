@@ -47,7 +47,7 @@ namespace PomMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "VersID,VersNo")] Ver vers)
+        public ActionResult Create([Bind(Include = "VerID,VerNo")] Ver vers)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace PomMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "VersID,VersNo")] Ver vers)
+        public ActionResult Edit([Bind(Include = "VerID,VerNo")] Ver vers)
         {
             if (ModelState.IsValid)
             {

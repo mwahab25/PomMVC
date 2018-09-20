@@ -88,7 +88,7 @@ namespace PomMVC.Controllers
             ViewBag.PageID = new SelectList(db.Pages, "PageID", "PageName");
             ViewBag.ProjectID = new SelectList(db.Projects, "ProjectID", "ProjectName");
             ViewBag.UserId = new SelectList(db.Users, "Id", "Email");
-            ViewBag.VersID = new SelectList(db.Versions, "VersID", "VersNo");
+            ViewBag.VerID = new SelectList(db.Versions, "VerID", "VerNo");
             return View();
         }
 
@@ -97,7 +97,7 @@ namespace PomMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "TransID,UserId,ProjectID,VersID,PageID,TransType,TransDate,TransFunEle,TransText")] Transaction transaction)
+        public ActionResult Create([Bind(Include = "TransID,UserId,ProjectID,VerID,PageID,TransType,TransDate,TransFunEle,TransText")] Transaction transaction)
         {
             if (ModelState.IsValid)
             {
@@ -109,7 +109,7 @@ namespace PomMVC.Controllers
             ViewBag.PageID = new SelectList(db.Pages, "PageID", "PageName", transaction.PageID);
             ViewBag.ProjectID = new SelectList(db.Projects, "ProjectID", "ProjectName", transaction.ProjectID);
             ViewBag.UserId = new SelectList(db.Users, "Id", "Email", transaction.UserId);
-            ViewBag.VersID = new SelectList(db.Versions, "VersID", "VersNo", transaction.VerID);
+            ViewBag.VerID = new SelectList(db.Versions, "VerID", "VerNo", transaction.VerID);
             return View(transaction);
         }
 
@@ -128,7 +128,7 @@ namespace PomMVC.Controllers
             ViewBag.PageID = new SelectList(db.Pages, "PageID", "PageName", transaction.PageID);
             ViewBag.ProjectID = new SelectList(db.Projects, "ProjectID", "ProjectName", transaction.ProjectID);
             ViewBag.UserId = new SelectList(db.Users, "Id", "Email", transaction.UserId);
-            ViewBag.VersID = new SelectList(db.Versions, "VersID", "VersNo", transaction.VerID);
+            ViewBag.VerID = new SelectList(db.Versions, "VerID", "VerNo", transaction.VerID);
             return View(transaction);
         }
 
@@ -137,7 +137,7 @@ namespace PomMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "TransID,UserId,ProjectID,VersID,PageID,TransType,TransDate,TransFunEle,TransText")] Transaction transaction)
+        public ActionResult Edit([Bind(Include = "TransID,UserId,ProjectID,VerID,PageID,TransType,TransDate,TransFunEle,TransText")] Transaction transaction)
         {
             if (ModelState.IsValid)
             {
@@ -148,7 +148,7 @@ namespace PomMVC.Controllers
             ViewBag.PageID = new SelectList(db.Pages, "PageID", "PageName", transaction.PageID);
             ViewBag.ProjectID = new SelectList(db.Projects, "ProjectID", "ProjectName", transaction.ProjectID);
             ViewBag.UserId = new SelectList(db.Users, "Id", "Email", transaction.UserId);
-            ViewBag.VersID = new SelectList(db.Versions, "VersID", "VersNo", transaction.VerID);
+            ViewBag.VerID = new SelectList(db.Versions, "VerID", "VerNo", transaction.VerID);
             return View(transaction);
         }
 

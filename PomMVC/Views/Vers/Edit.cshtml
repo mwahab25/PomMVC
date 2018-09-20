@@ -1,4 +1,4 @@
-﻿@model PomMVC.Models.Vers
+﻿@model PomMVC.Models.Ver
 
 @{
     ViewBag.Title = "Versions";
@@ -15,13 +15,13 @@
         <h4>Vers</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.VersID)
+        @Html.HiddenFor(model => model.VerID)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.VersNo, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.VerNo, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.VersNo, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.VersNo, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.VerNo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.VerNo, "", new { @class = "text-danger" })
             </div>
         </div>
 
